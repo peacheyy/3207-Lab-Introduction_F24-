@@ -1,13 +1,16 @@
 //Given Project code
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "random.h"
 
 void rand_string(char *str, size_t size) {
-    for (size_t n = 0; n < size; n++) {
-        str[n] = randchar();
-    } 
-    str[size] = '\0';
+    if (size) {
+        for (size_t n = 0; n < size; n++) {
+            str[n] = randchar();
+        }
+        str[size] = '\0';
+    }
 }
 
 char* rand_string_alloc(size_t size)
@@ -20,6 +23,7 @@ char* rand_string_alloc(size_t size)
 }
 
 int main(void) {
-    char *word = rand_string_alloc(7);
-    printf("%s\n", word);
+    srand((unsigned int)time(NULL));
+    char *random_word = rand_string_alloc(7);
+    printf("%s\n", random_word);
 }
